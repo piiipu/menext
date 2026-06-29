@@ -1,1 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Closet Circle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --mist:#f4f3f1;
+      --peony:#f2d1d4;
+      --mauve:#d8959b;
+      --sage:#829672;
+      --evergreen:#344c3d;
+      --ink:#1f2a22;
+      --card:#fffdfb;
+      --line:rgba(52,76,61,.12);
+      --shadow:0 18px 40px rgba(52,76,61,.12);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(242,209,212,.45), transparent 24%),
+        radial-gradient(circle at top right, rgba(130,150,114,.22), transparent 22%),
+        linear-gradient(180deg, #ffffff 0%, var(--mist) 100%);
+      color:var(--ink);
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:28px 20px 60px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 20px;
+      background:rgba(255,255,255,.7);
+      backdrop-filter:blur(10px);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:14px;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .brand h1{
+      font-family:"Playfair Display", serif;
+      margin:0;
+      font-size:1.7rem;
+      color:var(--evergreen);
+      letter-spacing:.3px;
+    }
+
+    .brand p{
+      margin:0;
+      font-size:.92rem;
+      color:rgba(31,42,34,.72);
+    }
+
+    .nav-pill{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:.92rem;
+      color:var(--evergreen);
+      font-weight:600;
+    }
+
+    .hero{
+      margin-top:28px;
+      padding:34px;
+      border-radius:30px;
+      background:linear-gradient(135deg, rgba(242,209,212,.72), rgba(244,243,241,.92) 48%, rgba(130,150,114,.16));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -70px -70px auto;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:rgba(52,76,61,.08);
+      filter:blur(2px);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .hero h2{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(2.2rem, 5vw, 4.5rem);
+      line-height:.96;
+      margin:0 0 14px;
+      color:var(--evergreen);
+      max-width:10ch;
+    }
+
+    .hero p{
+      margin:0 0 22px;
+      max-width:58ch;
+      font-size:1.02rem;
+      line-height:1.7;
+      color:rgba(31,42,34,.8);
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:13px 18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s ease;
+      font-size:.95rem;
+    }
+
+    .btn-primary{
+      background:var(--evergreen);
+      color:#fff;
+      box-shadow:0 12px 25px rgba(52,76,61,.18);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--evergreen);
+      border:1px solid rgba(52,76,61,.18);
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero-card{
+      background:rgba(255,255,255,.76);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .hero-card h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--evergreen);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+    }
+
+    .stat{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.5rem;
+      color:var(--mauve);
+      margin-bottom:5px;
+    }
+
+    .stat span{
+      color:rgba(31,42,34,.72);
+      font-size:.92rem;
+    }
+
+    .section{
+      margin-top:28px;
+      padding:22px;
+      border-radius:28px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-size:2rem;
+      color:var(--evergreen);
+    }
+
+    .section-head p{
+      margin:0;
+      color:rgba(31,42,34,.72);
+    }
+
+    .profiles{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .profile{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:var(--card);
+      padding:16px;
+      text-align:left;
+      cursor:pointer;
+      transition:.2s ease;
+      box-shadow:0 10px 22px rgba(52,76,61,.06);
+    }
+
+    .profile:hover{
+      transform:translateY(-4px);
+      border-color:rgba(52,76,61,.2);
+    }
+
+    .profile.active{
+      outline:3px solid rgba(242,209,212,.9);
+      background:linear-gradient(180deg, #fff, rgba(242,209,212,.15));
+    }
+
+    .avatar{
+      width:72px;
+      height:72px;
+      border-radius:22px;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#fff;
+      margin-bottom:12px;
+      letter-spacing:.04em;
+      background:linear-gradient(135deg, var(--sage), var(--evergreen));
+    }
+
+    .profile h4{
+      margin:0 0 5px;
+      font-size:1.05rem;
+      color:var(--evergreen);
+    }
+
+    .profile .meta{
+      font-size:.9rem;
+      color:rgba(31,42,34,.72);
+      line-height:1.5;
+    }
+
+    .tag-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .tag{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(130,150,114,.12);
+      color:var(--evergreen);
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    .closet-panel{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:20px;
+      align-items:start;
+    }
+
+    .chosen-profile{
+      padding:20px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(242,209,212,.35), rgba(255,255,255,.9));
+      border:1px solid var(--line);
+      position:sticky;
+      top:120px;
+    }
+
+    .chosen-profile img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:20px;
+      margin-bottom:16px;
+      background:#eee;
+    }
+
+    .chosen-profile h4{
+      margin:0 0 8px;
+      font-family:"Playfair Display", serif;
+      font-size:1.7rem;
+      color:var(--evergreen);
+    }
+
+    .chosen-profile p{
+      margin:0 0 14px;
+      color:rgba(31,42,34,.75);
+      line-height:1.6;
+    }
+
+    .closet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 12px 20px rgba(52,76,61,.06);
+    }
+
+    .item img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+      background:#e8e8e8;
+    }
+
+    .item-body{
+      padding:14px 15px 16px;
+    }
+
+    .item-body h5{
+      margin:0 0 6px;
+      font-size:1rem;
+      color:var(--evergreen);
+    }
+
+    .item-body .details{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      font-size:.88rem;
+      color:rgba(31,42,34,.7);
+    }
+
+    .price{
+      color:var(--mauve);
+      font-weight:800;
+    }
+
+    footer{
+      padding:26px 0 10px;
+      text-align:center;
+      color:rgba(31,42,34,.6);
+      font-size:.92rem;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .closet-panel{
+        grid-template-columns:1fr;
+      }
+
+      .profiles{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .chosen-profile{
+        position:relative;
+        top:auto;
+      }
+    }
+
+    @media (max-width: 640px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .profiles,
+      .closet-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero,
+      .section{
+        padding:18px;
+      }
+
+      .hero h2{
+        max-width:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>Closet Circle</h1>
+        <p>Rent style, swap closets, wear more.</p>
+      </div>
+      <div class="nav-pill">
+        <div class="pill">Browse closets</div>
+        <div class="pill">Return in 2 to 3 weeks</div>
+        <div class="pill">All ages welcome</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h2>Find a closet that fits your vibe.</h2>
+          <p>
+            Explore different user profiles, browse their curated closets, and rent a set of pieces for a few weeks.
+            It is affordable, fun, and better for the planet.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary">Start browsing</button>
+            <button class="btn btn-secondary">How it works</button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Platform snapshot</h3>
+          <div class="stats">
+            <div class="stat">
+              <strong>4 to 5</strong>
+              <span>pieces per closet</span>
+            </div>
+            <div class="stat">
+              <strong>2 to 3</strong>
+              <span>week rental period</span>
+            </div>
+            <div class="stat">
+              <strong>All ages</strong>
+              <span>for every style</span>
+            </div>
+            <div class="stat">
+              <strong>Preppy</strong>
+              <span>pink and green theme</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Featured users</h3>
+          <p>Click a profile to browse their closet.</p>
+        </div>
+      </div>
+
+      <div class="profiles" id="profiles"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Closet view</h3>
+          <p>Selected profile and available items.</p>
+        </div>
+      </div>
+
+      <div class="closet-panel">
+        <aside class="chosen-profile" id="selectedProfile"></aside>
+        <div class="closet-grid" id="closetGrid"></div>
+      </div>
+    </section>
+
+    <footer>
+      Closet Circle, where fashion gets shared, swapped, and styled again.
+    </footer>
+  </div>
+
+  <script>
+    const users = [
+      {
+        name: "Mia",
+        age: "Teen style",
+        bio: "Colorful, preppy, and fun everyday outfits.",
+        tags: ["Casual", "School", "Weekend"],
+        avatar: "M",
+        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80",
+        closet: [
+          { name: "Pink knit vest", type: "Top", price: "$12 / week", image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" },
+          { name: "Sage pleated skirt", type: "Bottom", price: "$14 / week", image: "https://images.unsplash.com/photo-1572804013427-4d7ca7268217?auto=format&fit=crop&w=900&q=80" },
+          { name: "Cream loafers", type: "Shoes", price: "$10 / week", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80" },
+          { name: "Mauve cardigan", type: "Layer", price: "$13 / week", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" }
+        ]
+      },
+      {
+        name: "Ava",
+        age: "Young professional",
+        bio: "Polished looks for work, dinners, and brunch.",
+        tags: ["Work", "Minimal", "Chic"],
+        avatar: "A",
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80",
+        closet: [
+          { name: "Tailored blazer", type: "Outerwear", price: "$16 / week", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80" },
+          { name: "White satin blouse", type: "Top", price: "$11 / week", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" },
+          { name: "Sage trousers", type: "Bottom", price: "$15 / week", image: "https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=900&q=80" },
+          { name: "Evergreen tote", type: "Accessory", price: "$9 / week", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80" }
+        ]
+      },
+      {
+        name: "Nora",
+        age: "Parent style",
+        bio: "Comfortable, practical, and still stylish.",
+        tags: ["Everyday", "Family", "Easy"],
+        avatar: "N",
+        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+        closet: [
+          { name: "Soft knit dress", type: "Dress", price: "$14 / week", image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" },
+          { name: "Canvas jacket", type: "Outerwear", price: "$13 / week", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=80" },
+          { name: "Neutral flats", type: "Shoes", price: "$10 / week", image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=80" },
+          { name: "Pink crossbody", type: "Accessory", price: "$8 / week", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80" }
+        ]
+      },
+      {
+        name: "Ella",
+        age: "Classic style",
+        bio: "Elegant pieces with a timeless preppy feel.",
+        tags: ["Classic", "Elegant", "All ages"],
+        avatar: "E",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+        closet: [
+          { name: "Cream blazer dress", type: "Dress", price: "$18 / week", image: "https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=900&q=80" },
+          { name: "Mauve silk scarf", type: "Accessory", price: "$7 / week", image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" },
+          { name: "Sage cardigan", type: "Layer", price: "$12 / week", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=900&q=80" },
+          { name: "Evergreen midi skirt", type: "Bottom", price: "$14 / week", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=900&q=80" }
+        ]
+      }
+    ];
+
+    const profilesEl = document.getElementById("profiles");
+    const selectedProfileEl = document.getElementById("selectedProfile");
+    const closetGridEl = document.getElementById("closetGrid");
+
+    let activeIndex = 0;
+
+    function renderProfiles() {
+      profilesEl.innerHTML = users.map((user, index) => `
+        <button class="profile ${index === activeIndex ? "active" : ""}" onclick="selectUser(${index})">
+          <div class="avatar">${user.avatar}</div>
+          <h4>${user.name}</h4>
+          <div class="meta">${user.age}<br>${user.bio}</div>
+          <div class="tag-row">
+            ${user.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+          </div>
+        </button>
+      `).join("");
+    }
+
+    function renderSelectedProfile() {
+      const user = users[activeIndex];
+      selectedProfileEl.innerHTML = `
+        <img src="${user.image}" alt="${user.name}'s profile">
+        <h4>${user.name}</h4>
+        <p>${user.bio}</p>
+        <div class="tag-row">
+          ${user.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+        </div>
+      `;
+    }
+
+    function renderCloset() {
+      const user = users[activeIndex];
+      closetGridEl.innerHTML = user.closet.map(item => `
+        <div class="item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="item-body">
+            <h5>${item.name}</h5>
+            <div class="details">
+              <span>${item.type}</span>
+              <span class="price">${item.price}</span>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function selectUser(index) {
+      activeIndex = index;
+      renderProfiles();
+      renderSelectedProfile();
+      renderCloset();
+    }
+
+    renderProfiles();
+    renderSelectedProfile();
+    renderCloset();
+  </script>
+</body>
+</html>
 
