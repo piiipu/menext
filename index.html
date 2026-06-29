@@ -432,6 +432,38 @@
         max-width:none;
       }
     }
+    .bundle-card img {
+  height: 260px;
+}
+
+.bundle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.bundle-header h5 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--evergreen);
+  text-transform: capitalize;
+}
+
+.bundle-desc {
+  margin: 0 0 16px;
+  color: rgba(31, 42, 34, 0.72);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.bundle-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.92rem;
+}
+
   </style>
 </head>
 <body>
@@ -516,126 +548,206 @@
     </footer>
   </div>
 
-  <script>
-    const users = [
-      {
-        name: "Mia",
-        age: "Teen style",
-        bio: "Colorful, preppy, and fun everyday outfits.",
-        tags: ["Casual", "School", "Weekend"],
-        avatar: "M",
-        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80",
-        closet: [
-          { name: "Pink knit vest", type: "Top", price: "$12 / week", image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" },
-          { name: "Sage pleated skirt", type: "Bottom", price: "$14 / week", image: "https://images.unsplash.com/photo-1572804013427-4d7ca7268217?auto=format&fit=crop&w=900&q=80" },
-          { name: "Cream loafers", type: "Shoes", price: "$10 / week", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80" },
-          { name: "Mauve cardigan", type: "Layer", price: "$13 / week", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" }
-        ]
-      },
-      {
-        name: "Ava",
-        age: "Young professional",
-        bio: "Polished looks for work, dinners, and brunch.",
-        tags: ["Work", "Minimal", "Chic"],
-        avatar: "A",
-        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80",
-        closet: [
-          { name: "Tailored blazer", type: "Outerwear", price: "$16 / week", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80" },
-          { name: "White satin blouse", type: "Top", price: "$11 / week", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" },
-          { name: "Sage trousers", type: "Bottom", price: "$15 / week", image: "https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=900&q=80" },
-          { name: "Evergreen tote", type: "Accessory", price: "$9 / week", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80" }
-        ]
-      },
-      {
-        name: "Nora",
-        age: "Parent style",
-        bio: "Comfortable, practical, and still stylish.",
-        tags: ["Everyday", "Family", "Easy"],
-        avatar: "N",
-        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
-        closet: [
-          { name: "Soft knit dress", type: "Dress", price: "$14 / week", image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" },
-          { name: "Canvas jacket", type: "Outerwear", price: "$13 / week", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=80" },
-          { name: "Neutral flats", type: "Shoes", price: "$10 / week", image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=80" },
-          { name: "Pink crossbody", type: "Accessory", price: "$8 / week", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80" }
-        ]
-      },
-      {
-        name: "Ella",
-        age: "Classic style",
-        bio: "Elegant pieces with a timeless preppy feel.",
-        tags: ["Classic", "Elegant", "All ages"],
-        avatar: "E",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
-        closet: [
-          { name: "Cream blazer dress", type: "Dress", price: "$18 / week", image: "https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=900&q=80" },
-          { name: "Mauve silk scarf", type: "Accessory", price: "$7 / week", image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" },
-          { name: "Sage cardigan", type: "Layer", price: "$12 / week", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=900&q=80" },
-          { name: "Evergreen midi skirt", type: "Bottom", price: "$14 / week", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=900&q=80" }
-        ]
-      }
-    ];
-
-    const profilesEl = document.getElementById("profiles");
-    const selectedProfileEl = document.getElementById("selectedProfile");
-    const closetGridEl = document.getElementById("closetGrid");
-
-    let activeIndex = 0;
-
-    function renderProfiles() {
-      profilesEl.innerHTML = users.map((user, index) => `
-        <button class="profile ${index === activeIndex ? "active" : ""}" onclick="selectUser(${index})">
-          <div class="avatar">${user.avatar}</div>
-          <h4>${user.name}</h4>
-          <div class="meta">${user.age}<br>${user.bio}</div>
-          <div class="tag-row">
-            ${user.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
-          </div>
-        </button>
-      `).join("");
+<script>
+  const users = [
+    {
+      name: "Mia",
+      age: "Teen style",
+      bio: "Colorful, preppy, and fun everyday outfits.",
+      tags: ["Casual", "School", "Weekend"],
+      avatar: "M",
+      image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80",
+      bundles: [
+        {
+          name: "Summer bundle",
+          description: "Choose 2 t-shirts, 1 short, and a pair of sandals.",
+          price: "12",
+          image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Back to school",
+          description: "Choose a blazer, 2 tops, and a pleated skirt.",
+          price: "15",
+          image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Weekend glow",
+          description: "Choose a sundress, sandals, and a crossbody bag.",
+          price: "11",
+          image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Cozy days",
+          description: "Choose an oversized hoodie, joggers, and beanie.",
+          price: "10",
+          image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    },
+    {
+      name: "Ava",
+      age: "Young professional",
+      bio: "Polished looks for work, dinners, and brunch.",
+      tags: ["Work", "Minimal", "Chic"],
+      avatar: "A",
+      image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80",
+      bundles: [
+        {
+          name: "Work & meet",
+          description: "Choose a blazer, tailored trousers, and a silk blouse.",
+          price: "18",
+          image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Night out",
+          description: "Choose a cocktail dress, a clutch, and a statement necklace.",
+          price: "20",
+          image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Brunch edit",
+          description: "Choose a midi skirt, a knit top, and loafers.",
+          price: "14",
+          image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Minimal essentials",
+          description: "Choose 2 neutral tops, straight jeans, and a tote bag.",
+          price: "13",
+          image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    },
+    {
+      name: "Nora",
+      age: "Parent style",
+      bio: "Comfortable, practical, and still stylish.",
+      tags: ["Everyday", "Family", "Easy"],
+      avatar: "N",
+      image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+      bundles: [
+        {
+          name: "Everyday comfort",
+          description: "Choose 2 soft knits, leggings, and sneakers.",
+          price: "12",
+          image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Mum on the go",
+          description: "Choose a utility jacket, jeans, a tee, and flats.",
+          price: "14",
+          image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Date night",
+          description: "Choose a wrap dress, heels, and a clutch.",
+          price: "16",
+          image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Family weekend",
+          description: "Choose a casual dress, cardigan, and sandals.",
+          price: "11",
+          image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    },
+    {
+      name: "Ella",
+      age: "Classic style",
+      bio: "Elegant pieces with a timeless preppy feel.",
+      tags: ["Classic", "Elegant", "All ages"],
+      avatar: "E",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+      bundles: [
+        {
+          name: "Timeless chic",
+          description: "Choose a blazer dress, pumps, and a silk scarf.",
+          price: "19",
+          image: "https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Garden party",
+          description: "Choose a floral midi, espadrilles, and a straw bag.",
+          price: "15",
+          image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Office edit",
+          description: "Choose tailored trousers, a blouse, and a cardigan.",
+          price: "17",
+          image: "https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          name: "Relaxed luxury",
+          description: "Choose a cashmere sweater, linen pants, and loafers.",
+          price: "16",
+          image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
     }
+  ];
 
-    function renderSelectedProfile() {
-      const user = users[activeIndex];
-      selectedProfileEl.innerHTML = `
-        <img src="${user.image}" alt="${user.name}'s profile">
+  const profilesEl = document.getElementById("profiles");
+  const selectedProfileEl = document.getElementById("selectedProfile");
+  const closetGridEl = document.getElementById("closetGrid");
+
+  let activeIndex = 0;
+
+  function renderProfiles() {
+    profilesEl.innerHTML = users.map((user, index) => `
+      <button class="profile ${index === activeIndex ? "active" : ""}" onclick="selectUser(${index})">
+        <div class="avatar">${user.avatar}</div>
         <h4>${user.name}</h4>
-        <p>${user.bio}</p>
+        <div class="meta">${user.age}<br>${user.bio}</div>
         <div class="tag-row">
           ${user.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
         </div>
-      `;
-    }
+      </button>
+    `).join("");
+  }
 
-    function renderCloset() {
-      const user = users[activeIndex];
-      closetGridEl.innerHTML = user.closet.map(item => `
-        <div class="item">
-          <img src="${item.image}" alt="${item.name}">
-          <div class="item-body">
-            <h5>${item.name}</h5>
-            <div class="details">
-              <span>${item.type}</span>
-              <span class="price">${item.price}</span>
-            </div>
+  function renderSelectedProfile() {
+    const user = users[activeIndex];
+    selectedProfileEl.innerHTML = `
+      <img src="${user.image}" alt="${user.name}'s profile">
+      <h4>${user.name}</h4>
+      <p>${user.bio}</p>
+      <div class="tag-row">
+        ${user.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+      </div>
+    `;
+  }
+
+  function renderCloset() {
+    const user = users[activeIndex];
+    closetGridEl.innerHTML = user.bundles.map(bundle => `
+      <div class="item bundle-card">
+        <img src="${bundle.image}" alt="${bundle.name}">
+        <div class="item-body">
+          <div class="bundle-header">
+            <h5>${bundle.name}</h5>
+            <span class="price">€${bundle.price}/wk</span>
           </div>
+          <p class="bundle-desc">${bundle.description}</p>
+          <button class="btn btn-primary bundle-btn">Rent this bundle</button>
         </div>
-      `).join("");
-    }
+      </div>
+    `).join("");
+  }
 
-    function selectUser(index) {
-      activeIndex = index;
-      renderProfiles();
-      renderSelectedProfile();
-      renderCloset();
-    }
-
+  function selectUser(index) {
+    activeIndex = index;
     renderProfiles();
     renderSelectedProfile();
     renderCloset();
-  </script>
-    renderCloset();
-  </script>
+  }
+
+  renderProfiles();
+  renderSelectedProfile();
+  renderCloset();
+</script>
+
 
   <!-- MVP Pitch Video Section -->
   <section class="section video-section">
