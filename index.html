@@ -634,148 +634,124 @@
     renderSelectedProfile();
     renderCloset();
   </script>
+    renderCloset();
+  </script>
+
+  <!-- MVP Pitch Video Section -->
+  <section class="section video-section">
+    <div class="section-head">
+      <div>
+        <h3>Watch our pitch</h3>
+        <p>See how MeNext works in 2 minutes.</p>
+      </div>
+    </div>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/REPLACE_WITH_VIDEO_ID"
+        title="MeNext MVP Pitch"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+
+  <style>
+    .video-section {
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <!-- Book an Appointment -->
+  <section class="section calendly-section">
+    <div class="calendly-card">
+      <div class="calendly-text">
+        <h3>Book an appointment</h3>
+        <p>Want to know more about MeNext? Set an appointment with us and we can talk about anything personally.</p>
+        <a href="https://calendly.com/dedeesmanur/30min"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn-primary">
+          Book a meeting
+        </a>
+      </div>
+      <div class="calendly-decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .calendly-section {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .calendly-card {
+      position: relative;
+      overflow: hidden;
+      padding: 44px 38px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(242,209,212,0.72), rgba(255,255,255,0.95) 55%, rgba(130,150,114,0.18));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .calendly-text {
+      position: relative;
+      z-index: 2;
+      max-width: 46ch;
+    }
+    .calendly-card h3 {
+      margin: 0 0 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      color: var(--evergreen);
+    }
+    .calendly-card p {
+      margin: 0 0 20px;
+      color: rgba(31,42,34,0.78);
+      line-height: 1.65;
+      font-size: 1.02rem;
+    }
+    .calendly-decoration {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .calendly-decoration .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.35;
+    }
+    .circle-1 { width: 180px; height: 180px; right: -40px; top: -40px; background: var(--peony); }
+    .circle-2 { width: 120px; height: 120px; right: 100px; bottom: -30px; background: var(--sage); }
+    .circle-3 { width: 90px; height: 90px; right: 30px; bottom: 40px; background: var(--mauve); }
+  </style>
+
+  <footer>
+    Closet Circle, where fashion gets shared, swapped, and styled again.
+  </footer>
+</div>
 </body>
 </html>
-<!-- Book an Appointment -->
-<section class="section calendly-section">
-  <div class="calendly-card">
-    <div class="calendly-text">
-      <h3>Book an appointment</h3>
-      <p>Want to know more about MeNext? Set an appointment with us and we can talk about anything personally.</p>
-      <a href="https://calendly.com/dedeesmanur/30min"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="btn btn-primary">
-        Book a meeting
-      </a>
-    </div>
-    <div class="calendly-decoration">
-      <div class="circle circle-1"></div>
-      <div class="circle circle-2"></div>
-      <div class="circle circle-3"></div>
-    </div>
-  </div>
-</section>
-
-<style>
-  .calendly-section {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .calendly-card {
-    position: relative;
-    overflow: hidden;
-    padding: 44px 38px;
-    border-radius: 28px;
-    background: linear-gradient(135deg, rgba(242, 209, 212, 0.72), rgba(255, 255, 255, 0.95) 55%, rgba(130, 150, 114, 0.18));
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-  }
-
-  .calendly-text {
-    position: relative;
-    z-index: 2;
-    max-width: 46ch;
-  }
-
-  .calendly-card h3 {
-    margin: 0 0 10px;
-    font-family: "Playfair Display", serif;
-    font-size: 2rem;
-    color: var(--evergreen);
-  }
-
-  .calendly-card p {
-    margin: 0 0 20px;
-    color: rgba(31, 42, 34, 0.78);
-    line-height: 1.65;
-    font-size: 1.02rem;
-  }
-
-  .calendly-decoration {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .calendly-decoration .circle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.35;
-  }
-
-  .circle-1 {
-    width: 180px;
-    height: 180px;
-    right: -40px;
-    top: -40px;
-    background: var(--peony);
-  }
-
-  .circle-2 {
-    width: 120px;
-    height: 120px;
-    right: 100px;
-    bottom: -30px;
-    background: var(--sage);
-  }
-
-  .circle-3 {
-    width: 90px;
-    height: 90px;
-    right: 30px;
-    bottom: 40px;
-    background: var(--mauve);
-  }
-</style>
-
-   </a>
- </section>
- <!-- MVP Pitch Video Section -->
-<section class="section video-section">
-  <div class="section-head">
-    <div>
-      <h3>Watch our pitch</h3>
-      <p>See how Closet Circle works in 2 minutes.</p>
-    </div>
-  </div>
-
-  <div class="video-wrapper">
-    <iframe
-      src="https://www.youtube.com/embed/REPLACE_WITH_VIDEO_ID"
-      title="Closet Circle MVP Pitch"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-  </div>
-</section>
-
-<style>
-  .video-section {
-    max-width: 880px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 22px;
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-    background: #000;
-  }
-
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
